@@ -22,3 +22,7 @@ class ColabParser:
             
         except Exception as e:
             raise Exception(f"Failed to parse Colab notebook: {str(e)}")
+
+from google.colab import auth
+def authenticate():
+    auth.authenticate_user()
