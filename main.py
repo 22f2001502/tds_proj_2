@@ -1,10 +1,18 @@
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import Request
+from fastapi.middleware import Middleware
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from typing import Optional
 import os
 from utils.colab_parser import ColabParser
 from utils.llm_handler import LLMHandler
 import json
+
+app = FastAPI(middleware=[
+    Middleware(TrustedHostMiddleware, allowed_hosts=["*"])
+])
+
 
 app = FastAPI()
 
